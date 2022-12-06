@@ -1,0 +1,22 @@
+«<!DOCTYPE html>»
+<html>  
+<body>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+
+<h1><%=buba%></h1>
+<form method = "post" id = "sendData">
+    <input type="text" id="fname" value="" ><br><br>
+    <input type="submit" value="Submit" >
+  </form> 
+  <script>
+    $("#sendData").submit(function(e) {
+        e.preventDefault();
+        var _data = $("#fname").val();
+        $.post('http://localhost:3000/main', { nr: _data }, function(response) {
+        console.log(response);
+    });
+    });
+  </script>
+  <p id = "p1" style="border-width:3px; border-style:solid; border-color:#FF0000; padding: 1em;">void</p>
+</body>
+</html> 
