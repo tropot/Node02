@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mega nigga</title>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+    <h1>hahahah</h1>
+    <p>edit this number</p>
+    <form id = "form" method="POST">
+        <input type="number" name="editNr" placeholder="Enter Number" id="numero" required>
+        <button type="sumbmit">SendNumber</button>
+    </form>
+
+    <script>
+        
+        $(document).ready(function(){
+          $("#form").submit(function(e) {
+            e.preventDefault();
+            var inputNr = document.getElementById('numero').value;
+            var params = new URLSearchParams(location.search);
+            var tableId = params.get('uid');
+            var oldNumber = params.get('inputNumber'); 
+            edit_data(inputNr,tableId,oldNumber);
+        });
+        
+        function edit_data(number,tId,oldInput)
+        {
+            
+            $.post('http://localhost:3000/main', { action: 'edit' , newData: number,id : tId,old : oldInput}, function(data) {
+            console.log(data);
+          });
+        }
+        });
+    
+        
+      </script>
+  </body>
+</html>
