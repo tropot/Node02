@@ -59,10 +59,6 @@ app.route("/main").get(function(req,res){
 	}
 })
 
-app.get('/edit', function(req, res) {
-  tableId = parseInt(req.query.uid);
-  res.render('edit.ejs');
-})
 
 app.listen(port, () => {
    console.log(`server is running at ${port}`);
